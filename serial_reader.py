@@ -13,7 +13,17 @@ for port in ports:
 url = '127.0.0.1:5000/submit'  # Substitua <seu_ip> pelo IP do seu servidor
 
 # Configuração da porta serial (verifique qual porta seu ATtiny85 está conectado)
-ser = serial.Serial('COM3', 9600)  # Substitua 'COM3' pela sua porta
+ports = serial.tools.list_ports.comports()
+if not ports:
+    print("Nenhuma porta serial disponível.")
+    exit()
+
+print("Portas seriais disponíveis:")
+for i, port in enumerate(ports):
+    print(f"{i}: {port.device}")
+
+port_index = int(input("Selecione o índice da porta serial: "))
+ser = serial.Serial(ports[port_index].device, 9600)
 
 while True:
     try:
