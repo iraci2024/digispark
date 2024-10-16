@@ -10,7 +10,7 @@ for port in ports:
 
 
 # URL do formulário que receberá os dados
-url = '127.0.0.1:5000/submit'  # Substitua <seu_ip> pelo IP do seu servidor
+url = 'http://108.165.179.123:5000/submit'  # Substitua <seu_ip> pelo IP do seu servidor
 
 # Configuração da porta serial (verifique qual porta seu ATtiny85 está conectado)
 ports = serial.tools.list_ports.comports()
