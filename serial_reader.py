@@ -9,11 +9,11 @@ for port in ports:
     print(f"Porta disponível: {port.device}")
 
 
-# Configuração da porta serial (verifique qual porta seu ATtiny85 está conectado)
-ser = serial.Serial('COM3', 9600)  # Substitua 'COM3' pela sua porta
-
 # URL do formulário que receberá os dados
 url = '127.0.0.1:5000/submit'  # Substitua <seu_ip> pelo IP do seu servidor
+
+# Configuração da porta serial (verifique qual porta seu ATtiny85 está conectado)
+ser = serial.Serial('COM3', 9600)  # Substitua 'COM3' pela sua porta
 
 while True:
     try:
