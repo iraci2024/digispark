@@ -1,6 +1,13 @@
 import serial
 import requests
 import time
+import serial.tools.list_ports
+
+# Listar portas seriais disponíveis
+ports = serial.tools.list_ports.comports()
+for port in ports:
+    print(f"Porta disponível: {port.device}")
+
 
 # Configuração da porta serial (verifique qual porta seu ATtiny85 está conectado)
 ser = serial.Serial('COM3', 9600)  # Substitua 'COM3' pela sua porta
