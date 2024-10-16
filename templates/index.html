@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Captura de Dados</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Dados Capturados</h1>
+        <div class="card mt-3">
+            <div class="card-body">
+                <h5 class="card-title">Entradas do Usuário</h5>
+                <textarea id="captured-data" class="form-control" rows="10" readonly></textarea>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Função para atualizar os dados capturados em tempo real
+        function fetchCapturedData() {
+            fetch('/captured')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('captured-data').value = data;
+                });
+        }
+
+        // Atualiza os dados a cada 2 segundos
+        setInterval(fetchCapturedData, 2000);
+    </script>
+</body>
+</html>
